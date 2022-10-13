@@ -3,21 +3,40 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/app_navigation"
-    app:startDestination="@id/noteListingFragment">
+    app:startDestination="@id/loginFragment">
 
     <fragment
-        android:id="@+id/noteListingFragment"
-        android:name="com.msuslo.firebasewithmvvm.note.NoteListingFragment"
-        android:label="fragment_note_listing"
-        tools:layout="@layout/fragment_note_listing" >
+        android:id="@+id/registerFragment"
+        android:name="com.msuslo.firebasewithmvvm.ui.auth.RegisterFragment"
+        android:label="RegisterFragment" >
+
         <action
-            android:id="@+id/action_noteListingFragment_to_noteDetailFragment"
-            app:destination="@id/noteDetailFragment" />
+            android:id="@+id/action_registerFragment_to_home_navigation"
+            app:destination="@id/home_navigation" />
     </fragment>
 
     <fragment
-        android:id="@+id/noteDetailFragment"
-        android:name="com.msuslo.firebasewithmvvm.note.NoteDetailFragment"
-        android:label="fragment_note_detail"
-        tools:layout="@layout/fragment_note_detail" />
+        android:id="@+id/loginFragment"
+        android:name="com.msuslo.firebasewithmvvm.ui.auth.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_forgotPasswordFragment"
+            app:destination="@id/forgotPasswordFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_home_navigation"
+            app:destination="@id/home_navigation" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/forgotPasswordFragment"
+        android:name="com.msuslo.firebasewithmvvm.ui.auth.ForgotPasswordFragment"
+        android:label="fragment_forgot_password"
+        tools:layout="@layout/fragment_forgot_password" />
+
+    <include app:graph="@navigation/home_navigation" />
+
 </navigation>

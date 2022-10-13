@@ -1,11 +1,18 @@
 package com.msuslo.firebasewithmvvm.data.model
 
+import android.os.Parcelable
 import com.google.firebase.firestore.ServerTimestamp
-import java.util.Date
+import kotlinx.parcelize.Parcelize
+import java.util.*
 
+@Parcelize
 data class Note(
-    val id: String,
-    val text: String,
+    var id: String = "",
+    var user_id: String = "",
+    val title: String = "",
+    val description: String = "",
+    val tags: MutableList<String> = arrayListOf(),
+    val images: List<String> = arrayListOf(),
     @ServerTimestamp
-    val date: Date,
-)
+    val date: Date = Date(),
+) : Parcelable
