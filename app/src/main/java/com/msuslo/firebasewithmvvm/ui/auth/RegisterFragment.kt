@@ -69,8 +69,13 @@ class RegisterFragment : Fragment() {
             id = "",
             first_name = binding.firstNameEt.text.toString(),
             last_name = binding.lastNameEt.text.toString(),
-            job_title = binding.jobTitleEt.text.toString(),
             email = binding.emailEt.text.toString(),
+            phoneNum = "",
+            age = 0,
+            sex = "",
+            profileImg = "",
+            images = arrayListOf(),
+            status = binding.jobTitleEt.text.toString()
         )
     }
 

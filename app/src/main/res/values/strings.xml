@@ -24,4 +24,13 @@
     <string name="create">Create</string>
     <string name="done">Done</string>
     <string name="error_task_detail">Task detail is missing</string>
+    <string name="name">Name</string>
+    <string name="lastname">Lastname</string>
+    <string name="age">Age</string>
+    <string name="sex">Sex</string>
+    <string name="phone">Phone</string>
+    <string name="history_sick">History sick</string>
+    <string name="teeth_status">Teeth status</string>
+    <string name="update_profile">Update profile</string>
+    <string name="profile">Profile</string>
 </resources>

@@ -18,6 +18,7 @@ class MainActivity : AppCompatActivity() {
         navController = navHostFragment.navController
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         super.onBackPressed()
         if (navController.currentDestination?.id == R.id.loginFragment){

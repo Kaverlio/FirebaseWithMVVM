@@ -44,4 +44,13 @@ object RepositoryModule {
     ): IAuthRepository {
         return AuthRepositoryImp(auth,database,appPreferences,gson)
     }
+
+    @Provides
+    @Singleton
+    fun provideProfileRepository(
+        database: FirebaseFirestore,
+        storageReference: StorageReference
+    ) : IProfileRepository {
+        return ProfileRepositoryImpl(database, storageReference)
+    }
 }

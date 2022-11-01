@@ -65,6 +65,11 @@ class HomeFragment : Fragment() {
                     textViewTitle.text = getString(R.string.tasks)
                     tab.onSelection(false)
                 }
+                HomeTabs.PROFILE.index -> {
+                    tab.customView = view
+                    textViewTitle.text = getString(R.string.profile)
+                    tab.onSelection(false)
+                }
             }
         }.attach()
     }
