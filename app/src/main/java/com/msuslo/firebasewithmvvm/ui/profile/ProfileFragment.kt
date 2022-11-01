@@ -89,9 +89,6 @@ class ProfileFragment : Fragment() {
 //                }
 //        }
 
-        binding.back.setOnClickListener {
-            findNavController().navigateUp()
-        }
     }
 
 
