@@ -7,7 +7,7 @@ import kotlinx.parcelize.Parcelize
 data class Queue(
     var id: String = "",
     var date: String = "",
-    var status: String = "",
+    var time: String = "",
     var patient_id: String = "",
-    var dentist_date: String = "",
+    var dentist_id: String = "",
 ) : Parcelable

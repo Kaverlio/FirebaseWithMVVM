@@ -18,20 +18,7 @@ class ProfileRepositoryImpl(
     val database: FirebaseFirestore,
     val storageReference: StorageReference
 ) : IProfileRepository {
-    override fun updateUser(user: User, result: (UiState<String>) -> Unit) {
-        val document = database.collection(FireStoreCollection.USER).document(user.id)
-        document.set(user).addOnSuccessListener {
-            result.invoke(
-                UiState.Success("Your data has been update successfully")
-            )
-        }.addOnFailureListener {
-            result.invoke(
-                UiState.Failure(
-                    it.localizedMessage
-                )
-            )
-        }
-    }
+
 
     override suspend fun uploadImageProfile(fileUri: Uri, onResult: (UiState<Uri>) -> Unit) {
         try {

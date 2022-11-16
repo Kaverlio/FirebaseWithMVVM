@@ -33,4 +33,5 @@ enum class HomeTabs(val index: Int, val key: String) {
     NOTES(0, "notes"),
     TASKS(1, "tasks"),
     PROFILE(2, "profile"),
+    QUEUE(3, "queue"),
 }

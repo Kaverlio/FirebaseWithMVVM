@@ -1,6 +1,5 @@
 package com.msuslo.firebasewithmvvm.data.repository
 
-import android.util.Log
 import com.google.firebase.database.FirebaseDatabase
 import com.msuslo.firebasewithmvvm.data.model.Task
 import com.msuslo.firebasewithmvvm.data.model.User

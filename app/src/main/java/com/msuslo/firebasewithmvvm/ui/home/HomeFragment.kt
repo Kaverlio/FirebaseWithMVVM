@@ -1,5 +1,6 @@
 package com.msuslo.firebasewithmvvm.ui.home
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -50,6 +51,7 @@ class HomeFragment : Fragment() {
         binding.tabLayout.onTabSelectionListener()
     }
 
+    @SuppressLint("InflateParams")
     private fun viewPager2SetupWithTabLayout(tabLayout: TabLayout, viewPager2: ViewPager2){
         TabLayoutMediator(tabLayout, viewPager2) { tab, position ->
             val view = LayoutInflater.from(requireContext()).inflate(R.layout.item_tab_layout, null)

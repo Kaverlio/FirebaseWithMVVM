@@ -53,4 +53,12 @@ object RepositoryModule {
     ) : IProfileRepository {
         return ProfileRepositoryImpl(database, storageReference)
     }
+
+    @Provides
+    @Singleton
+    fun provideQueueRepository(
+        database: FirebaseDatabase
+    ) : IQueueRepository{
+        return QueueRepositoryImp(database)
+    }
 }

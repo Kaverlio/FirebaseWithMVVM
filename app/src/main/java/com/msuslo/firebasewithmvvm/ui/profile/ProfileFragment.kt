@@ -1,5 +1,6 @@
 package com.msuslo.firebasewithmvvm.ui.profile
 
+import android.annotation.SuppressLint
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -17,6 +18,7 @@ import com.msuslo.firebasewithmvvm.databinding.FragmentProfileBinding
 import com.msuslo.firebasewithmvvm.ui.auth.AuthViewModel
 import com.msuslo.firebasewithmvvm.ui.note.ImageListingAdapter
 import com.msuslo.firebasewithmvvm.ui.note.NoteListingFragment
+import com.msuslo.firebasewithmvvm.ui.updateprofile.UpdateProfileFragment
 import com.msuslo.firebasewithmvvm.utils.UiState
 import com.msuslo.firebasewithmvvm.utils.hide
 import com.msuslo.firebasewithmvvm.utils.show
@@ -55,16 +57,18 @@ class ProfileFragment : Fragment() {
             binding = FragmentProfileBinding.inflate(layoutInflater)
             return binding.root
         }
+
+        binding.btnUpdateProfile.setOnClickListener { UpdateProfileFragment().show() }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         authViewModel.getSession {
-            binding.tvName.setText("${R.string.name}: ${it?.first_name}")
-            binding.tvLastName.setText("${R.string.lastname}: ${it?.last_name}")
-            binding.tvSex.setText("${R.string.sex}: ${it?.sex}")
-            binding.tvPhone.setText("${R.string.phone}: ${it?.phoneNum}")
-            binding.tvAge.setText("${R.string.age}: ${it?.age.toString()}")
+            binding.tvName.setText("${getString(R.string.name)}: ${it?.first_name}")
+            binding.tvLastName.setText("${getString(R.string.lastname)}: ${it?.last_name}")
+            binding.tvSex.setText("${getString(R.string.sex)}: ${it?.sex}")
+            binding.tvPhone.setText("${getString(R.string.phone)}: ${it?.phoneNum}")
+            binding.tvAge.setText("${getString(R.string.age)}: ${it?.age.toString()}")
 //            binding.ivProfile.setImageURI(it?.profileImg?.toUri())
 //            imageUris = it?.images?.map { it.toUri() }?.toMutableList() ?: arrayListOf()
         }

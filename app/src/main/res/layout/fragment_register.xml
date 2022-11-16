@@ -13,7 +13,7 @@
         android:fontFamily="@font/titillium_web_bold"
         android:text="Registration"
         android:textColor="@color/black"
-        android:textSize="22dp"
+        android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -25,31 +25,19 @@
         android:fontFamily="@font/titillium_web_regular"
         android:text="Note taking app where you save words"
         android:textColor="@color/black"
-        android:textSize="14dp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/name" />
 
-    <TextView
-        android:id="@+id/first_name_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
-        android:fontFamily="@font/titillium_web_regular"
-        android:text="First Name"
-        android:textColor="@color/black"
-        android:textSize="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/headline" />
 
     <EditText
         android:id="@+id/first_name_et"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:background="@drawable/black_white_rect_bg"
@@ -57,24 +45,13 @@
         android:fontFamily="@font/titillium_web_regular"
         android:inputType="textPersonName"
         android:textColor="@color/black"
-        android:textSize="14dp"
+        android:textSize="16sp"
+        android:hint="@string/name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/first_name_label" />
+        app:layout_constraintTop_toBottomOf="@+id/headline" />
 
-    <TextView
-        android:id="@+id/last_name_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/titillium_web_regular"
-        android:text="Last Name"
-        android:textColor="@color/black"
-        android:textSize="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/first_name_et" />
 
     <EditText
         android:id="@+id/last_name_et"
@@ -82,7 +59,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:background="@drawable/black_white_rect_bg"
@@ -90,57 +67,30 @@
         android:fontFamily="@font/titillium_web_regular"
         android:inputType="textPersonName"
         android:textColor="@color/black"
-        android:textSize="14dp"
+        android:textSize="16sp"
+        android:hint="@string/lastname"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/last_name_label" />
+        app:layout_constraintTop_toBottomOf="@+id/first_name_et" />
 
-    <TextView
-        android:id="@+id/job_title_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/titillium_web_regular"
-        android:text="Job Title"
-        android:textColor="@color/black"
-        android:textSize="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/last_name_et" />
-
-    <EditText
+    <Spinner
         android:id="@+id/job_title_et"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:spinnerMode="dropdown"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:background="@drawable/black_white_rect_bg"
-        android:ems="10"
-        android:fontFamily="@font/titillium_web_regular"
-        android:inputType="textPersonName"
-        android:textColor="@color/black"
-        android:textSize="14dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/job_title_label" />
+        app:layout_constraintTop_toBottomOf="@+id/last_name_et">
 
-    <TextView
-        android:id="@+id/email_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/titillium_web_regular"
-        android:text="Email"
-        android:textColor="@color/black"
-        android:textSize="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/job_title_et" />
+    </Spinner>
 
     <EditText
         android:id="@+id/email_et"
@@ -148,7 +98,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:background="@drawable/black_white_rect_bg"
@@ -156,40 +106,29 @@
         android:fontFamily="@font/titillium_web_regular"
         android:inputType="textPersonName"
         android:textColor="@color/black"
-        android:textSize="14dp"
+        android:textSize="16sp"
+        android:hint="@string/enter_email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/email_label" />
-
-    <TextView
-        android:id="@+id/pass_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/titillium_web_regular"
-        android:text="Password"
-        android:textColor="@color/black"
-        android:textSize="16dp"
-        app:layout_constraintEnd_toEndOf="@+id/email_et"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/email_et"
-        app:layout_constraintTop_toBottomOf="@+id/email_et" />
+        app:layout_constraintTop_toBottomOf="@+id/job_title_et"
+        tools:ignore="TextFields" />
 
     <EditText
         android:id="@+id/pass_et"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/black_white_rect_bg"
         android:fontFamily="@font/titillium_web_regular"
         android:inputType="textPassword"
         android:textColor="@color/black"
-        android:textSize="14dp"
+        android:textSize="16sp"
+        android:hint="@string/enter_password"
         app:layout_constraintEnd_toEndOf="@+id/email_et"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/email_et"
-        app:layout_constraintTop_toBottomOf="@+id/pass_label" />
+        app:layout_constraintTop_toBottomOf="@+id/email_et" />
 
 
     <RelativeLayout
@@ -207,7 +146,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/black_rect_bg"
-            android:text="Register"
+            android:text="@string/register"
             android:textAllCaps="false"
             android:textAppearance="@style/SubTitleStyle"
             android:textColor="@color/white"

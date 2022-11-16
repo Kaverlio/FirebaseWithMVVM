@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:id="@+id/topContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <Spinner
+            android:id="@+id/job_title_et"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.6"
+            android:layout_gravity="center"
+            android:spinnerMode="dropdown"
+            android:layout_margin="10dp"
+            android:background="@drawable/black_white_rect_bg"
+            app:layout_constraintHorizontal_bias="0.0"
+            />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/addRecord"
+            android:layout_weight="0.4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_gravity="center"
+            android:background="@drawable/black_rect_bg"
+            android:text="@string/stand_in_line"
+            android:textAllCaps="false"
+            android:textAppearance="@style/SubTitleStyle"
+            android:textColor="@color/white"
+            app:backgroundTint="@color/black"
+            app:icon="@drawable/ic_baseline_add_24"/>
+    </LinearLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/queueListing"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/topContent"
+        android:layout_centerInParent="true"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginTop="8dp" />
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:indeterminateTint="@color/black"
+        android:layout_centerInParent="true"/>
+
+
+
+</RelativeLayout>
