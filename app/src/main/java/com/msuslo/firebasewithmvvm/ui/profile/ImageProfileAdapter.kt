@@ -22,6 +22,11 @@ class ImageProfileAdapter() : RecyclerView.Adapter<ImageProfileAdapter.MyViewHol
         holder.bind(item,position)
     }
 
+    fun updateList(list: MutableList<Uri>){
+        this.list = list
+        notifyDataSetChanged()
+    }
+
     override fun getItemCount(): Int {
         return list.size
     }

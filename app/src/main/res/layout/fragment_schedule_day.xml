@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="10dp">
+
+
+    <TextView
+        android:id="@+id/tvDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="10:11:2022"
+        android:textAlignment="center"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"/>
+
+    <TimePicker
+        android:id="@+id/timePicker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/tvDate"
+        android:timePickerMode="spinner"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/timePicker"
+        android:background="@drawable/black_rect_bg"
+        android:layout_centerHorizontal="true"
+        android:text="@string/add_new_record"
+        android:textAllCaps="false"
+        android:textAppearance="@style/SubTitleStyle"
+        android:textColor="@color/white"
+        app:backgroundTint="@color/black"
+        app:icon="@drawable/ic_baseline_add_24" />
+
+
+</RelativeLayout>

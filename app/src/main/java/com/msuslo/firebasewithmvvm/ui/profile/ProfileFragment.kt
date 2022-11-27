@@ -1,24 +1,20 @@
 package com.msuslo.firebasewithmvvm.ui.profile
 
-import android.annotation.SuppressLint
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.net.toUri
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.github.dhaval2404.imagepicker.ImagePicker
 import com.msuslo.firebasewithmvvm.R
 import com.msuslo.firebasewithmvvm.data.model.User
 import com.msuslo.firebasewithmvvm.databinding.FragmentProfileBinding
 import com.msuslo.firebasewithmvvm.ui.auth.AuthViewModel
-import com.msuslo.firebasewithmvvm.ui.note.ImageListingAdapter
-import com.msuslo.firebasewithmvvm.ui.note.NoteListingFragment
-import com.msuslo.firebasewithmvvm.ui.updateprofile.UpdateProfileFragment
 import com.msuslo.firebasewithmvvm.utils.UiState
 import com.msuslo.firebasewithmvvm.utils.hide
 import com.msuslo.firebasewithmvvm.utils.show
@@ -58,43 +54,61 @@ class ProfileFragment : Fragment() {
             return binding.root
         }
 
-        binding.btnUpdateProfile.setOnClickListener { UpdateProfileFragment().show() }
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        authViewModel.getSession {
-            binding.tvName.setText("${getString(R.string.name)}: ${it?.first_name}")
-            binding.tvLastName.setText("${getString(R.string.lastname)}: ${it?.last_name}")
-            binding.tvSex.setText("${getString(R.string.sex)}: ${it?.sex}")
-            binding.tvPhone.setText("${getString(R.string.phone)}: ${it?.phoneNum}")
-            binding.tvAge.setText("${getString(R.string.age)}: ${it?.age.toString()}")
-//            binding.ivProfile.setImageURI(it?.profileImg?.toUri())
-//            imageUris = it?.images?.map { it.toUri() }?.toMutableList() ?: arrayListOf()
+        observer()
+        binding.btnUpdateProfile.setOnClickListener {
+            findNavController().navigate(R.id.action_profileFragment_to_updateProfileFragment)
         }
-        updateUI()
+
+
+        authViewModel.getSession {
+            viewModel.getUser(it)
+            binding.btnTeethStatus.isVisible = it?.status != "Dentist"
+        }
     }
 
+    private fun observer() {
+        viewModel.user.observe(viewLifecycleOwner) {
+            when (it) {
+                is UiState.Loading -> {
+                    binding.progressBar.show()
+                }
+                is UiState.Failure -> {
+                    binding.progressBar.hide()
+                    toast(it.error)
+                }
+                is UiState.Success -> {
+                    binding.progressBar.hide()
+                    updateProfile(it.data)
+                }
+            }
+        }
 
-    private fun updateUI() {
-        binding.images.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+    }
+
+    private fun updateProfile(data: User) {
+        binding.tvName.text = "${getString(R.string.name)}: ${data?.first_name}"
+        binding.tvLastName.text = "${getString(R.string.lastname)}: ${data?.last_name}"
+        binding.tvSex.text = "${getString(R.string.sex)}: ${data?.sex}"
+        binding.tvPhone.text = "${getString(R.string.phone)}: ${data?.phoneNum}"
+        binding.tvAge.text = "${getString(R.string.age)}: ${data?.age.toString()}"
+        binding.ivProfile.setImageURI(data.profileImg.toUri())
+        if (data.profileImg.isNullOrEmpty())
+            binding.ivProfile.setImageResource(R.drawable.ic_profile_24)
+
+        imageUris = data.images.map { it.toUri() }.toMutableList() ?: arrayListOf()
+        binding.images.layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         binding.images.adapter = adapter
         binding.images.itemAnimator = null
 
-//        adapter.updateList(imageUris)
-//        binding.addImageLl.setOnClickListener {
-//            binding.progressBar.show()
-//            ImagePicker.with(this)
-//                //.crop()
-//                .compress(1024)
-//                .galleryOnly()
-//                .createIntent { intent ->
-//                    startForProfileImageResult.launch(intent)
-//                }
-//        }
+        adapter.updateList(imageUris)
 
     }
-
 
     companion object {
         @JvmStatic

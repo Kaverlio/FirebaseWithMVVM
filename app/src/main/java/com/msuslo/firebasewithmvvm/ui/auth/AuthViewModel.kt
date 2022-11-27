@@ -67,4 +67,8 @@ class AuthViewModel @Inject constructor(
     fun getSession(result: (User?) -> Unit){
         repository.getSession(result)
     }
+
+    fun updateProfile(user: User){
+        repository.updateUserInfo(user) { }
+    }
 }

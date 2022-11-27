@@ -30,19 +30,19 @@
                 android:layout_height="wrap_content"
                 tools:ignore="MissingConstraints">
 
-                <ImageView
+                <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/ivProfile"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginEnd="5dp"
-                    android:layout_marginBottom="5dp"
+                    android:layout_width="110dp"
+                    android:layout_height="140dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
                     android:contentDescription="@string/profile"
+                    android:scaleType="fitXY"
                     android:src="@drawable/ic_profile_24"
                     android:visibility="visible"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:tint="@color/black" />
+                    app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize8Percent" />
 
                 <TextView
                     android:id="@+id/tvName"
@@ -131,18 +131,6 @@
                 app:layout_constraintStart_toStartOf="parent">
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnHistorySick"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="15dp"
-                    android:background="@drawable/black_rect_bg"
-                    android:text="@string/history_sick"
-                    android:textAllCaps="false"
-                    android:textAppearance="@style/SubTitleStyle"
-                    android:textColor="@color/white"
-                    app:backgroundTint="@color/black"/>
-
-                <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnTeethStatus"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -152,24 +140,22 @@
                     android:textAllCaps="false"
                     android:textAppearance="@style/SubTitleStyle"
                     android:textColor="@color/white"
+                    app:backgroundTint="@color/black30"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnUpdateProfile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:background="@drawable/black_rect_bg"
+                    android:text="@string/update_profile"
+                    android:textAllCaps="false"
+                    android:textAppearance="@style/SubTitleStyle"
+                    android:textColor="@color/white"
                     app:backgroundTint="@color/black"/>
             </LinearLayout>
 
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnUpdateProfile"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="15dp"
-                android:background="@drawable/black_rect_bg"
-                android:text="@string/update_profile"
-                android:textAllCaps="false"
-                android:textAppearance="@style/SubTitleStyle"
-                android:textColor="@color/white"
-                app:backgroundTint="@color/black"
-                app:layout_constraintTop_toBottomOf="@+id/llBtn"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

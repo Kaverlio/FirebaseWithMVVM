@@ -72,6 +72,12 @@ class HomeFragment : Fragment() {
                     textViewTitle.text = getString(R.string.profile)
                     tab.onSelection(false)
                 }
+
+                HomeTabs.QUEUE.index -> {
+                    tab.customView = view
+                    textViewTitle.text = getString(R.string.queue)
+                    tab.onSelection(false)
+                }
             }
         }.attach()
     }

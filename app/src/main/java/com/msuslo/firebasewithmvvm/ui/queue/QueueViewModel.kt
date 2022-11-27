@@ -37,7 +37,12 @@ class QueueViewModel @Inject constructor(
         repository.deleteRecord(queue) { _deleteRecord.value = it }
     }
 
-    fun getRecord(user: User?){
+    fun getRecordForDentist(user: User?){
+        _getRecord.value = UiState.Loading
+        repository.getRecordForDentist(user) { _getRecord.value = it }
+    }
+
+    fun getQueues(user: User?){
         _getRecord.value = UiState.Loading
         repository.getRecord(user) { _getRecord.value = it }
     }

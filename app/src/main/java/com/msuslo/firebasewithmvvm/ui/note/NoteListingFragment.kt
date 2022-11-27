@@ -1,7 +1,6 @@
 package com.msuslo.firebasewithmvvm.ui.note
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -60,7 +59,7 @@ class NoteListingFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        oberver()
+        observer()
         val staggeredGridLayoutManager = StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
         binding.recyclerView.layoutManager = staggeredGridLayoutManager
         binding.recyclerView.adapter = adapter
@@ -73,7 +72,7 @@ class NoteListingFragment : Fragment() {
         }
     }
 
-    private fun oberver(){
+    private fun observer(){
         viewModel.note.observe(viewLifecycleOwner) { state ->
             when(state){
                 is UiState.Loading -> {

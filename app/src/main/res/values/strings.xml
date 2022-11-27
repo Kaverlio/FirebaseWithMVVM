@@ -1,10 +1,14 @@
 <resources>
-    <string name="app_name">Note Taking</string>
+    <string name="app_name">Your dentistry</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="note_item_desc_placholder">In this chapter, you’re going to learn about the different types of subjects in RxJava, see how to work with each one and why you might choose one over another based on some common use cases.</string>
     <string name="note_detail_desc_placeholder">You’ve gotten a handle on what an Observable is, how to create one, how to subscribe to it, and how to dispose of things when you’re done. Observables are a fundamental part of RxJava, but a common need when developing apps is to manually add new values onto an Observable at runtime that will then be emitted to subscribers. What you want is something that can act as both an Observable and as an observer. And that something is called a subject.</string>
     <string name="error_description">Description missing</string>
+    <string name="error_name">Name missing</string>
+    <string name="error_last_name">Lastname missing</string>
+    <string name="error_age">Age missing</string>
+    <string name="error_phone">Phone missing</string>
     <string name="error_title">Title missing</string>
     <string name="error_tag_text">Enter text</string>
     <string name="enter_first_name">Enter first name</string>
@@ -34,6 +38,7 @@
     <string name="teeth_status">Teeth status</string>
     <string name="update_profile">Update profile</string>
     <string name="profile">Profile</string>
+    <string name="queue">Queue</string>
     <string name="dentist">Dentist</string>
     <string name="date">Date</string>
     <string name="time">Time</string>
@@ -45,6 +50,7 @@
     <string name="haven_t_registered_yet">Haven’t registered yet?</string>
     <string name="login">Login</string>
     <string name="stand_in_line">Stand in line</string>
+    <string name="find_first_free_place">Find first free place</string>
     <string name="sun">SUN</string>
     <string name="mon">MON</string>
     <string name="tue">TUE</string>
@@ -52,9 +58,20 @@
     <string name="thud">THUD</string>
     <string name="fri">FRI</string>
     <string name="sat">SAT</string>
+    <string name="edit_profile">Edit profile</string>
+    <string name="calendar">Calendar</string>
+    <string name="schedule">Schedule</string>
+    <string name="apply">Apply</string>
+    <string name="images">Images</string>
+    <string name="add_new_record">Add new record</string>
 
     <string-array name="Statuses">
         <item>Patient</item>
         <item>Dentist</item>
+    </string-array>
+
+    <string-array name="Sex">
+        <item>Male</item>
+        <item>Female</item>
     </string-array>
 </resources>

@@ -14,7 +14,7 @@ import com.msuslo.firebasewithmvvm.R
 import com.msuslo.firebasewithmvvm.data.model.Queue
 import com.msuslo.firebasewithmvvm.databinding.FragmentQueueBinding
 import com.msuslo.firebasewithmvvm.ui.auth.AuthViewModel
-import com.msuslo.firebasewithmvvm.ui.calendar.CalendarFragment
+import com.msuslo.firebasewithmvvm.ui.profile.ProfileViewModel
 import com.msuslo.firebasewithmvvm.utils.UiState
 import com.msuslo.firebasewithmvvm.utils.hide
 import com.msuslo.firebasewithmvvm.utils.show
@@ -28,7 +28,10 @@ class QueueFragment : Fragment() {
 
     val TAG: String = "QueueFragment"
     private var param1: String? = null
+    private var queue = mutableListOf<Queue>()
+    private var status = ""
     val viewModel: QueueViewModel by viewModels()
+    private val viewModelProfile: ProfileViewModel by viewModels()
     val authViewModel: AuthViewModel by viewModels()
     lateinit var binding: FragmentQueueBinding
     var deleteItemPos = -1
@@ -61,31 +64,15 @@ class QueueFragment : Fragment() {
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.addRecord.setOnClickListener {
-            findNavController().navigate(R.id.action_queueFragment_to_calendarFragment)
-//            val createCalendarFragmentSheet = CalendarFragment()
-//            createCalendarFragmentSheet {
-//                if (it) {
-//                    authViewModel.getSession {
-//                        viewModel.getRecord(it)
-//                    }
-//                }
-//            }
-//            createCalendarFragmentSheet.show(childFragmentManager)
-        }
-
-        binding.queueListing.layoutManager = LinearLayoutManager(requireContext())
-        binding.queueListing.adapter = adapter
-
         authViewModel.getSession {
-            viewModel.getRecord(it)
+            if (it?.status == "Dentist")
+                viewModel.getRecordForDentist(it)
+            else
+                viewModel.getQueues(it)
+            status = it?.status!!
         }
-        observer()
-    }
-
-    private fun observer(){
         viewModel.getRecord.observe(viewLifecycleOwner) {
-            when(it){
+            when (it) {
                 is UiState.Loading -> {
                     binding.progressBar.show()
                 }
@@ -95,12 +82,61 @@ class QueueFragment : Fragment() {
                 }
                 is UiState.Success -> {
                     binding.progressBar.hide()
-                    adapter.updateList(it.data.toMutableList())
+                    queue = it.data.toMutableList()
+                    if (status == "Dentist")
+                        viewModelProfile.getUsersByStatus("Patient")
+                    else
+                        viewModelProfile.getFullNameById(queue[0].dentist_id)
                 }
             }
         }
+
+        viewModelProfile.users.observe(viewLifecycleOwner) {
+            when (it) {
+                is UiState.Loading -> {
+                    binding.progressBar.show()
+                }
+                is UiState.Failure -> {
+                    binding.progressBar.hide()
+                    toast(it.error)
+                }
+                is UiState.Success -> {
+                    binding.progressBar.hide()
+                    adapter.updateListUsers(it.data.toMutableList())
+                    adapter.updateListQueue(queue)
+                }
+            }
+        }
+
+        viewModelProfile.name.observe(viewLifecycleOwner) {
+            when (it) {
+                is UiState.Loading -> {
+                    binding.progressBar.show()
+                }
+                is UiState.Failure -> {
+                    binding.progressBar.hide()
+                    toast(it.error)
+                }
+                is UiState.Success -> {
+                    binding.progressBar.hide()
+                    adapter.name = it.data
+                    adapter.updateListQueue(queue)
+                }
+            }
+        }
+        binding.queueListing.layoutManager = LinearLayoutManager(requireContext())
+        binding.queueListing.adapter = adapter
+
+        observer()
+    }
+
+    private fun observer() {
+        binding.addRecord.setOnClickListener {
+            findNavController().navigate(R.id.action_queueFragment_to_calendarFragment)
+        }
+
         viewModel.deleteRecord.observe(viewLifecycleOwner) {
-            when(it){
+            when (it) {
                 is UiState.Loading -> {
                     binding.progressBar.show()
                 }

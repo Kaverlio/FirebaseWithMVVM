@@ -15,6 +15,7 @@ object FireDatabase{
 object FireStoreDocumentField {
     val DATE = "date"
     val USER_ID = "user_id"
+    val STATUS = "status"
 }
 
 object SharedPrefConstants {
@@ -25,8 +26,7 @@ object SharedPrefConstants {
 object FirebaseStorageConstants {
     val ROOT_DIRECTORY = "app"
     val NOTE_IMAGES = "note"
-    val XRAY_PATIENT = "patient"
-    val SERTIFICATE_DENTIST = "dentist"
+    val USER_IMAGES = "user"
 }
 
 enum class HomeTabs(val index: Int, val key: String) {

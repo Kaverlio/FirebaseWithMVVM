@@ -1,5 +1,6 @@
 package com.msuslo.firebasewithmvvm.data.repository
 
+import android.annotation.SuppressLint
 import com.google.firebase.database.FirebaseDatabase
 import com.msuslo.firebasewithmvvm.data.model.Task
 import com.msuslo.firebasewithmvvm.data.model.User
@@ -48,6 +49,7 @@ class TaskRepositoryImp(
             }
     }
 
+    @SuppressLint("SuspiciousIndentation")
     override fun getTasks(user: User?, result: (UiState<List<Task>>) -> Unit) {
         val reference =
             database.reference.child(FireDatabase.TASK)//.orderByChild("user_id").equalTo(user?.id)

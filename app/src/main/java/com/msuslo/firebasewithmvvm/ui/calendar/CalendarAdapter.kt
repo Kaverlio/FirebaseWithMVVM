@@ -19,11 +19,11 @@ class CalendarAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val itemView = CalendarCellBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return MyViewHolder((itemView))
+        return MyViewHolder(itemView)
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val item = list[position]
+        var item = list[position]
         holder.bind(item, position)
     }
 
@@ -40,10 +40,10 @@ class CalendarAdapter(
     inner class MyViewHolder(val binding: CalendarCellBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: String, position: Int) {
             if (item.isNullOrEmpty())
-                binding.dayContainer.isVisible = false
+                binding.root.isVisible = false
             binding.cellDayText.setText(item)
             binding.cellDayText.setOnClickListener {
-                onItemClicked?.invoke(position,item)
+                onItemClicked?.invoke(position, item)
             }
         }
     }
